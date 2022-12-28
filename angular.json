@@ -27,7 +27,10 @@
             "src/assets/css/magnific-popup.css",
             "src/assets/css/flexslider.css",
             "src/assets/fonts/flaticon/font/flaticon.css",
-            "src/assets/css/style.css",         
+            "src/assets/css/style.css",        
+            "src/assets/css/style.css",
+        
+         
               "src/styles.css"
             ],
             "scripts": ["src/assets/js/jquery.min.js",
