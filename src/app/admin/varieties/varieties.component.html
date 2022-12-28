@@ -1,0 +1,62 @@
+<div class="row" *ngIf="product">
+    <div class="col-lg-12">
+        <h1>Product Varieties - {{ product.name }} </h1>
+    </div>
+
+    <div class="col-lg-12">
+        <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+            <input type="hidden" form-controlName="id" />
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="">Color</label>
+                    <input type="text" formControlName="color" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label for="">Size</label>
+                    <input type="text" formControlName="size" class="form-control" />
+
+                </div>
+
+                <div class="form-group">
+                    <label for="">MRP</label>
+                    <input type="number" formControlName="mrp" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="">price</label>
+                    <input type="number" formControlName="price" class="form-control" />
+                </div>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success"/></div>
+        </form>
+
+        <div class="table-scrollable">
+            <table class="table table-bordered table-stripped">
+                <tr>
+                    <th>Actions</th>
+                    <th>Sr No</th>
+                    <th>Color</th>
+                    <th>Size</th>
+                    <th>MRP</th>
+                    <th>Price</th>
+                </tr>
+                <tr *ngFor="let variety of product.varieties; let i = index;">
+                    <td style="width:150px;">
+                        <button class="btn btn-danger btn-sm" (click)="deleteVariety(variety)">Delete</button>
+                    </td>
+                    <td>{{ ( i + 1 )}}</td>
+                    <td>{{ variety.color }}</td>
+                    <td>{{ variety.size }}</td>
+                    <td>{{ variety.mrp | currency:'INR' }} </td>
+                    <td>{{ variety.price | currency:'INR'}} </td>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

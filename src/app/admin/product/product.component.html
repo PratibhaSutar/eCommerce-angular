@@ -1,1 +1,112 @@
-<p>product works!</p>
+<div class="row" *ngIf="formdata">
+    <div class="col-lg-12">
+        <h1>Product</h1>
+    </div>
+
+    <div class="col-lg-12">
+        <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+            <input type="hidden" class="form-control" formControlName="id" />
+            <input type="hidden" class="form-control" formControlName="image" />
+            <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" class="form-control" formControlName="name" />
+                <span *ngIf="!formdata.controls.name.valid && formdata.controls.name.touched"
+                class="text-danger">Please enter Product name.</span><br>
+            </div>
+            <div class="form-group">
+                <label for="">Category</label>
+                <select class="form-select form-control" formControlName="pcid">
+                    <option value="">Select Category</option>
+                    <option *ngFor="let category of categories;" value="{{category._id}}">{{category.name}}</option>
+                    <span *ngIf="!formdata.controls.pcid.valid && formdata.controls.pcid.touched"
+                    class="text-danger">Please enter Category.</span><br>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="">Description</label>
+                <textarea formControlName="description" class="form-control"></textarea>
+                <span *ngIf="!formdata.controls.description.valid && formdata.controls.description.touched"
+                class="text-danger">Please enter Description</span><br>
+            </div>
+
+            <div class="form-group">
+                <label for="">Specification</label>
+                <textarea class="form-control" formControlName="specification"></textarea>
+                <span *ngIf="!formdata.controls.specification.valid && formdata.controls.specification.touched"
+                class="text-danger">Please enter Specification</span>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <label for="">MRP</label>
+                        <input type="number" min="1" class="form-control" formControlName="mrp"/>
+                        <span *ngIf="!formdata.controls.mrp.valid && formdata.controls.mrp.touched"
+                        class="text-danger">Please enter MRP </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <label for="">Price</label>
+                        <input type="number" min="1" class="form-control" formControlName="price" />
+                        <span *ngIf="!formdata.controls.price.valid && formdata.controls.price.touched"
+                        class="text-danger">Please enter Price</span>
+                    </div>
+                </div>
+</div>
+<div class="row">
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <label for="">In Stock</label>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="instock" formControlName="instock"
+                                id="exampleRadios1" value="Yes">
+                            <label class="form-check-label" for="exampleRadios1">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" formControlName="instock" name="instock"
+                                id="exampleRadios2" value="No">
+                            <label class="form-check-label" for="exampleRadios2">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="">Is Active</label>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="isactive" formControlName="isactive"
+                                    id="exampleRadios3" value="Yes">
+                                <label class="form-check-label" for="exampleRadios3">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" formControlName="isactive" name="isactive"
+                                    id="exampleRadios4" value="No">
+                                <label class="form-check-label" for="exampleRadios4">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+
+            <div class="form-group">
+                <label for="">Image</label>
+                <input type="file" class="form-control" accept="image/*" (change)="imageChanged($event)" />
+
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" [disabled]="!formdata.valid" class="btn btn-success" /></div>
+        </form>
+       
+       

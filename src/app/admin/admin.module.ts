@@ -9,6 +9,10 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './product/product.component';
 import { OrdersComponent } from './orders/orders.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { VarietiesComponent } from './varieties/varieties.component';
+
 
 
 @NgModule({
@@ -18,12 +22,17 @@ import { OrdersComponent } from './orders/orders.component';
     NavbarComponent,
     CategoriesComponent,
     ProductsComponent,
-    ProductComponent,
-    OrdersComponent
+   ProductComponent,
+    OrdersComponent,
+    VarietiesComponent
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxPaginationModule,
+
   ]
 })
 export class AdminModule { }

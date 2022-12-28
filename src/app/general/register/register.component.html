@@ -23,47 +23,47 @@
                                     class="img-fluid" alt="Sample image">
                             </div>
                             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                                <form>
+                                <form [formGroup]="formdata" (submit)="submit(formdata.value)">
                                     <div
                                         class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                                         <p class="lead fw-normal mb-0 me-3">Register</p>
-
+                                        <span class="text-danger">{{ message }}</span>
                                     </div>
                                      <!-- Name input -->
                                      <div class="form-outline mb-4">
                                         <label class="form-label" for="form3Example3">Name</label>
-                                        <input type="text" id="form3Example1" class="form-control form-control-lg"
-                                            placeholder="Enter a name" />
+                                        <input type="text"  class="form-control form-control-lg"
+                                            placeholder="Enter a name" formControlName="name"/>
 
                                     </div>
                                     <!-- Email input -->
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form3Example3">Email address</label>
-                                        <input type="email" id="form3Example3" class="form-control form-control-lg"
-                                            placeholder="Enter a valid email address" />
+                                        <input type="email"  class="form-control form-control-lg"
+                                            placeholder="Enter a valid email address" formControlName="email"/>
 
                                     </div>
                                      <!-- Mobile input -->
                                      <div class="form-outline mb-4">
                                         <label class="form-label" for="form3Example3">Mobile No</label>
-                                        <input type="text" id="form3Example2" class="form-control form-control-lg"
-                                            placeholder="Enter a mobile no" />
+                                        <input type="text"  class="form-control form-control-lg"
+                                            placeholder="Enter a mobile no" formControlName="mobileno"/>
 
                                     </div>
 
                                     <!-- Password input -->
                                     <div class="form-outline mb-3">
                                         <label class="form-label" for="form3Example4">Password</label>
-                                        <input type="password" id="form3Example4" class="form-control form-control-lg"
-                                            placeholder="Enter password" />
+                                        <input type="password"  class="form-control form-control-lg"
+                                            placeholder="Enter password" formControlName="password"/>
 
                                     </div>
 
                                       <!-- Confirm Password input -->
                                       <div class="form-outline mb-3">
                                         <label class="form-label" for="form3Example4">Confirm Password</label>
-                                        <input type="password" id="form3Example4" class="form-control form-control-lg"
-                                            placeholder="Enter confirm password" />
+                                        <input type="password" class="form-control form-control-lg"
+                                            placeholder="Enter confirm password" formControlName="cpassword"/>
 
                                     </div>
 
@@ -71,8 +71,8 @@
 
 
                                     <div class="text-center text-lg-start mt-4 pt-2">
-                                        <button type="button" class="btn btn-primary btn-lg"
-                                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
+                                        <input  type="submit" class="btn btn-primary btn-lg"
+                                           [disabled]="!formdata.valid" style="padding-left: 2.5rem; padding-right: 2.5rem;" value="Register"/>
                                         <p class="small fw-bold mt-2 pt-1 mb-0">Have an account?
                                              <a routerLink="/userlogin"
                                                 class="link-danger">Register</a></p>

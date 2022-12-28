@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-orders',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
-
-  constructor() { }
+  orders:any;
+  constructor(private api:ApiService) { }
 
   ngOnInit(): void {
+    //console.log(localStorage.getItem("id"));
+  this.api.post("admin/orders", {data:{userid:""}}).subscribe((result:any)=>{
+this.orders = result.data;
+this.orders = this.orders.filter((order:any)=>{
+  if(order.status == "paid")
+  return true;
+  else
+  return false;
+});
+//console.log(this.orders);
+   });
   }
 
 }

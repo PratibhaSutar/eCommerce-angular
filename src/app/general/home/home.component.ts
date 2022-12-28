@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +8,16 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+ categories:any;
+ baseurl = this.api.baseurl;
+  constructor(private api:ApiService) { }
+ ngOnInit(): void {
 
-  constructor() { }
-
-  ngOnInit(): void {
+    this.api.post("productcategory/list",{}).subscribe((result:any)=>{
+      this.categories = result.data;});
   }
+
+  
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -36,5 +42,7 @@ export class HomeComponent implements OnInit {
     },
     nav: true
   }
+
+  
 }
 

@@ -19,8 +19,8 @@
         <div class="col-sm-12 text-left menu-1">
           <ul>
             <li routerLinkActive="active"><a routerLink="/home">Home</a></li>
-            <li routerLinkActive="active"><a routerLink="/products">Men</a></li>
-            <li routerLinkActive="active"><a routerLink="/products">Women</a></li>
+            <li *ngFor="let category of categories;" routerLinkActive="active"><a routerLink="/products/{{category._id}}">{{ category.name }}</a></li>
+            <li routerLinkActive="active"><a routerLink="/products ">Women</a></li>
             <!--<li class="has-dropdown">
               <a href="men.html">Men</a>
               <ul class="dropdown">
@@ -31,14 +31,17 @@
                 <li><a href="add-to-wishlist.html">Wishlist</a></li>
               </ul>
             </li>
-            <li><a href="women.html">Women</a></li>-->
-            <li routerLinkActive="active"><a routerLink="/about">About</a></li>
-            <li routerLinkActive="active"><a routerLink="/contact">Contact</a></li>
-            <li *ngIf="adminloggedin" routerLinkActive="active"><a routerLink="/admin/dashboard">Admin</a></li>
-            <li routerLinkActive="active" class="cart"><a href="cart.html"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
-            <li routerLinkActive="active" class="cart"><a routerLink="/userlogin"><i class="icon-user"></i> USER LOGIN</a></li>
+        <li><a href="women.html">Women</a></li>-->
+    <li routerLinkActive="active"><a routerLink="/about">About</a></li>
+    <li routerLinkActive="active"><a routerLink="/contact">Contact</a></li>
+     <li *ngIf="adminloggedin" routerLinkActive="active"><a routerLink="/admin/dashboard">Admin</a></li>
+    <li routerLinkActive="active" class="cart"><a routerLink="/cart"><i class="icon-shopping-cart"></i> 
+     Cart [<span id="spnCount">{{ cartcount }}</span>]</a></li>
+       <li *ngIf="userloggedin" routerLinkActive="active" class="active"><a routerLink="/user"><i class="icon-user"></i>Hello {{username}}</a></li>
+   <li routerLinkActive="active" class="active"><a style="cursor:pointer;" (click)="logout()">Logout</a></li>
+     <li *ngIf="!userloggedin" routerLinkActive="active" class="active"><a routerLink="/userlogin"><i class="icon-user"></i> USER LOGIN</a></li>
            
-          </ul>
+   </ul>
         </div>
       </div>
     </div>

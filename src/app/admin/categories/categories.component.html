@@ -1,1 +1,73 @@
-<p>categories works!</p>
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Categories</h1>
+    </div>
+
+    <div class="col-lg-12">
+        <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+            <input type="hidden" formControlName="id" />
+            <input type="hidden" formControlName="image" />
+            <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" class="form-control" formControlName="name"/>
+                <span *ngIf="!formdata.controls.name.valid && formdata.controls.name.touched"
+                class="text-danger">Please enter Name</span>
+            </div>
+            <div class="form-group">
+                <label for="">Sr No</label>
+                <input type="text" class="form-control" formControlName="srno" />
+                <span *ngIf="!formdata.controls.srno.valid && formdata.controls.srno.touched"
+                class="text-danger">Please enter Sr No</span>
+            </div>
+
+            <div class="form-group">
+                <label for="">Image</label>
+                <input type="file" class="form-control" accept="image/*" (change)="imageChanged($event)" />
+                <span *ngIf="!formdata.controls.image.valid && formdata.controls.image.touched"
+                class="text-danger">Please select Image</span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success" [disabled]="!formdata.valid"/>
+               
+
+
+            </div>
+          <div class="form-group">
+
+                <div class="text-center" *ngIf="this.isLoading">
+                    <div>
+
+                        <img src="assets/images/Spinner-3.gif" />
+                        <span>Loading...</span>
+                    </div>
+                </div>
+            </div>
+
+          
+
+        </form>
+        <div class="table-scrollable">
+            <table class="table table-bordered table-stripped">
+                <tr>
+                    <th>Actions</th>
+                    <th>Sr No</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                </tr>
+                <tr *ngFor="let category of categories;">
+                    <td style="width:150px;">
+                        <button class="btn btn-primary btn-sm" (click)="editcategory(category._id)">Edit</button>
+                        <button class="btn btn-danger btn-sm" (click)="deletecategory(category._id)">Delete</button>
+                    </td>
+                    <td>{{ category.srno }}</td>
+                    <td><img src="{{baseurl +  category.imagepath }}" style="height:80px; width:auto;" /></td>
+                    <td>{{ category.name}} </td>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

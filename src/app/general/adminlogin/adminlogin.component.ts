@@ -9,10 +9,14 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
   styleUrls: ['./adminlogin.component.css']
 })
 export class AdminloginComponent implements OnInit {
+  
 
   formdata: any;
   message="";
 
+  
+  
+  
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
@@ -30,6 +34,7 @@ export class AdminloginComponent implements OnInit {
 
   onClickSubmit(data:any){
 //console.log(data);
+
 this.api.post("admin/login",{data:data}).subscribe(
   (result:any)=>
   {
@@ -38,7 +43,9 @@ this.api.post("admin/login",{data:data}).subscribe(
       localStorage.setItem("usertype","admin");
       window.location.replace("/admin/dashboard/");
       //alert("Success");
+      
     }
+    
     else{
       this.message = "User and Password is Wrong";
      // alert("User and Password is Wrong");
@@ -54,4 +61,5 @@ console.log(error);
 
 
   }
+
 }

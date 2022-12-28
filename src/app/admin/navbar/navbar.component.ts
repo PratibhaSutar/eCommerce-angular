@@ -11,12 +11,11 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-logout(){
-  if(confirm("Sure to logout?")){
+  logout() {
+    if (confirm("Sure to logout?")) {
 
-  
-  localStorage.clear();
-  window.location.replace("/");
-}
-}
+      localStorage.clear();
+      window.location.replace("/");
+    }
+  }
 }
