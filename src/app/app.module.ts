@@ -16,12 +16,16 @@ import { RegisterComponent } from './general/register/register.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProductComponent } from './general/product/product.component';
+import { CartComponent } from './general/cart/cart.component';
+import { CheckoutComponent } from './general/checkout/checkout.component';
+import { OrdersuccessComponent } from './general/ordersuccess/ordersuccess.component';
+
 
 
 
 @NgModule({
-  declarations: [
-    
+   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
@@ -32,9 +36,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AdminloginComponent,
     UserloginComponent,
     RegisterComponent,
+    ProductComponent,
+    CartComponent,
+    CheckoutComponent,
+    OrdersuccessComponent
     
   ],
   imports: [
+    
     BrowserModule,
     CarouselModule,
     BrowserAnimationsModule,
@@ -42,7 +51,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
-    
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
